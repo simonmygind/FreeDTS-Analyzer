@@ -1,0 +1,32 @@
+Running analysis: SF
+From directory: /lustre/astro/semygind/Data/MembraneInclusion/KPKL/KP0KL0/
+frame = 100 to 10000
+rep = 1 to 10
+----------------------------------------------------------
+TSI files of N_v 1968 vertices
+Start Loading TSI files...
+Finished loading rep 1
+Finished loading rep 2
+Finished loading rep 3
+Finished loading rep 4
+Finished loading rep 5
+Finished loading rep 6
+Finished loading rep 7
+Finished loading rep 8
+Finished loading rep 9
+Finished loading rep 10
+Finished Loading TSI Files in 2015.68 s 
+Starting Fourier Transform...
+Finished fouriertransforming rep1
+Finished fouriertransforming rep2
+Finished fouriertransforming rep3
+Finished fouriertransforming rep4
+Finished fouriertransforming rep5
+Finished fouriertransforming rep6
+Finished fouriertransforming rep7
+Finished fouriertransforming rep8
+Finished fouriertransforming rep9
+Finished fouriertransforming rep10
+Finished Fourier Transform in 405.61 s 
+Finished Static Fluctuation in 0.421734 s 
+Finished Analysis total runtime 2422.9 s 
