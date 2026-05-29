@@ -1,0 +1,10 @@
+# Compiled output
+*.o
+*.out
+*.a
+ANA/
+*.log
+
+# Slurm/HPC job output
+*.err
+slurm-*.out
