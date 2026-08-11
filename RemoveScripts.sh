@@ -1,14 +1,18 @@
 #!/bin/bash
 
-Upper_Limit_HOURS=3600
+THRESHOLD=$((1 * 60 * 60))  # Measured in seconds
+NAME=EPS
+#1 10 0.1
+while read -r jobid jobname start_time; do
+    # Skip jobs not starting with "KP"
+    [[ "$jobname" != ${NAME}* ]] && continue
 
-while read -r jobid start_time; do
     start_epoch=$(date -d "$start_time" +%s)
     now=$(date +%s)
     elapsed=$((now - start_epoch))
-    
-    if [ $elapsed -lt $Upper_Limit_HOURS ]; then
-        echo "Cancelling job $jobid (elapsed: $((elapsed/60)) minutes)"
-        scancel $jobid
+
+    if [ "$elapsed" -lt "$THRESHOLD" ]; then
+        echo "Cancelling $jobid ($jobname, running $((elapsed / 3600))h $((elapsed % 3600 / 60))m)"
+        scancel "$jobid"
     fi
-done < <(squeue -u $USER -h -o "%i %S")
+done < <(squeue -u "$USER" -h -o "%i %j %S")

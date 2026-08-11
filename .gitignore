@@ -1,10 +1,16 @@
-# Compiled output
-*.o
-*.out
-*.a
-ANA/
-*.log
+# Ignore everything by default; only the allowlisted paths below are tracked.
+*
 
-# Slurm/HPC job output
-*.err
-slurm-*.out
+# --- dts_ana: source/header files only (no Build/, no CMakeLists, no Garbage.txt) ---
+!/dts_ana/
+!/dts_ana/*.cpp
+!/dts_ana/*.h
+!/dts_ana/*.tpp
+
+# --- parent directory: scripts, notebooks, python files (non-recursive) ---
+!/*.sh
+!/*.ipynb
+!/*.py
+
+# --- always keep .gitignore itself tracked ---
+!/.gitignore

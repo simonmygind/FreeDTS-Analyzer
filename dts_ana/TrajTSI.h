@@ -9,11 +9,12 @@
 using std::array,std::vector;
 
 struct PosData {
-    array<double,3> boxsize;
-    NDArray<array<double,3>> pos; // pos = Linear(N_r,N_f,N_v)
+    NDArray3D<array<double,3>> pos; // pos = Linear(N_r,N_f,N_v)
+    NDArray2D<array<double,3>> boxsize; // boxsize = Linear(N_r,N_f)
+    array<double,3> boxsize_mean;
 
     PosData(int N_r, int N_f, int N_v) : 
-        pos(vector<int>{N_r,N_f,N_v}), boxsize({0,0,0}){}
+        pos(N_r,N_f,N_v), boxsize(N_r,N_f),boxsize_mean({0,0,0}){}
 
     int N_r() const {return pos.Shape(0);}
     int N_f() const {return pos.Shape(1);}
@@ -31,6 +32,7 @@ class TrajTSI
 
         PosData LoadConfig();
         void LoadTSI();
+        void AlignTilt(); // Per-frame rotation removing global membrane tilt (mean normal -> z)
 
         const PosData& getPosData() const {return m_PosData;}
 };
